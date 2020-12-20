@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Сообщения</title>
+</head>
+<body>
+    <ol id="message-list">
+
+    </ol>
+    <script>
+        fetch('/list')
+        .then(r => r.json())
+        .then(res => {
+            let str = '';
+            res.forEach(e => str += `<li>[${e.dateTime}] ${e.author}: ${e.message}</li>`);
+            document.querySelector('#message-list').innerHTML = str;
+        });
+    </script>
+</body>
